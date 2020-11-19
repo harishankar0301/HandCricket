@@ -7,7 +7,12 @@ Data Structures Used: Stack as a Linked List
 How to Run? 
 Please use Linux based OS and GCC to compile and run  (Doesn't compile on Windows Mingw X64 properly)
 
+To compile
+
 gcc handcricket.c -o handcricket
+
+Then execute 
+
 ./handcricket
 
 

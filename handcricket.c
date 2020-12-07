@@ -80,12 +80,11 @@ player* pop(node *top)
 
 void bat(node *top, int overs);
 void bat2(node *top, int overs, int team_no);
-int GetPlayerToss(char player1[], char player2[], int oversToplay);
 
 void order(struct player *team, int n, node *top, int overs, int innings, int team_no)
 {
     printf("Enter the order\n");
-    int temp[5];
+    int temp[10];
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &temp[i]);
@@ -108,7 +107,7 @@ void order(struct player *team, int n, node *top, int overs, int innings, int te
         bat(top, overs);
     }
     else{
-        bat2(top, overs,team_no);
+        bat2(top, overs, team_no);
     }
 }
 
@@ -119,7 +118,7 @@ void score_board(struct player *team1, struct player *team2, int n)
     printf("-----------------------------------------------------------------------------\n");
     for(int i = 0; i < n; i++)
     {
-        printf("        %10s  %3d              ||          %10s  %3d\n", (team1 + i)->name, (team1 + i)->score, (team2 + i)->name, (team2 + i)->score);
+        printf("       %10s  %3d               ||         %10s  %3d\n", (team1 + i)->name, (team1 + i)->score, (team2 + i)->name, (team2 + i)->score);
     }
 }
 
@@ -229,7 +228,7 @@ int main()
             }
         } while(batorbowlChoice > 2 || batorbowlChoice < 1);
 
-        printf("\n");
+        printf("\n\n");
 
         if (batorbowlChoice == 1)
         {
@@ -260,7 +259,6 @@ void bat(node *top, int overs)
     
     while (i < balls && top->next != NULL)
     {
-        int s;
         int currentBall, currentRun;
 
         do
@@ -303,7 +301,7 @@ void bat(node *top, int overs)
         {
             if (currentRun == 6)
                 printf("Sixerrrrrr!!!\n\n");
-            if (currentRun == 4)
+            else if (currentRun == 4)
                 printf("Into the gap for Four!\n\n");
             score += currentRun;
             target += currentRun;
@@ -313,11 +311,21 @@ void bat(node *top, int overs)
         printf("Total score is: %d\n\n", totalScore);
     }
     target += 1;
+    printf("Target is: %d\n\n",target);
+    int f = 0;
     if(top->next != NULL)
     {
         while(top->next != NULL)
         {
-            pop(top);
+            if(f == 0)
+            {
+                player *tt = pop(top);
+                tt->score = score;
+                f = 1;
+            }
+            else{
+                pop(top);
+            }
         }
     }
 }
@@ -328,12 +336,12 @@ void bat2(node *top, int overs, int team_no)
     int i = 0;
     node *temp = peek(top);
     int balls = overs*6;
+    int ballsRem = balls;
 
     printf("%s walks in to bat now!\n\n", temp->p->name);
 
-    while (i < balls && top->next != NULL && target >=0)
+    while (i < balls && top->next != NULL && target > 0)
     {
-        int s;
         int currentBall, currentRun;
 
         do
@@ -355,7 +363,7 @@ void bat2(node *top, int overs, int team_no)
         } while(currentRun > 6 || currentRun < 1);
 
         printf("\n");
-        balls -= 1;
+        ballsRem -= 1;
 
         if (currentRun == currentBall)
         {
@@ -377,17 +385,20 @@ void bat2(node *top, int overs, int team_no)
         {
             if (currentRun == 6)
                 printf("Sixerrrrrr!!!\n\n");
-            if (currentRun == 4)
+            else if (currentRun == 4)
                 printf("Into the gap for Four!\n\n");
             score += currentRun;
             target -= currentRun;
         }
+
         i++;
+
         if(target > 0 && balls > 0 && top->next != NULL)
         {
-            printf("\n%d more runs to win in %d balls\n\n", target, balls);
+            printf("\n%d more runs to win in %d balls\n\n", target, ballsRem);
         }
     }
+
     if(target <= 0)
     {
         if(team_no == 1)
@@ -411,6 +422,22 @@ void bat2(node *top, int overs, int team_no)
     else
     {
         printf("\n\nIT'S A DRAW!!!!\n\n");
+    }
+    int f = 0;
+    if(top->next != NULL)
+    {
+        while(top->next != NULL)
+        {
+            if(f == 0)
+            {
+                player *tt = pop(top);
+                tt->score = score;
+                f = 1;
+            }
+            else{
+                pop(top);
+            }
+        }
     }
 }
 

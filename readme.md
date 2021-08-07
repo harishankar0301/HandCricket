@@ -1,7 +1,6 @@
-   Hand Cricket Game in C using Stack ADT as linked list
+# Hand Cricket Game in C using Stack ADT as linked list
 
    
-
 Data Structures Used: Stack as a Linked List
 
 How to Run? 
@@ -16,7 +15,7 @@ Then execute
 ./handcricket
 
 
-Features in the project:
+# Features in the project:
 
 Hand cricket is a game in which any number of players can play a game of cricket using their hands (in this case machines) against each other.
  

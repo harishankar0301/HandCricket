@@ -4,7 +4,7 @@
 Data Structures Used: Stack as a Linked List
 
 How to Run? 
-Please use Linux based OS and GCC to compile and run  (Doesn't compile on Windows Mingw X64 properly)
+Please use Linux based OS and GCC to compile and run  (Doesn't compile on Windows Mingw x64 properly)
 
 To compile
 
@@ -34,27 +34,29 @@ The players are then pushed into a stack according to the batting order in rever
 We also have a well-formatted score board that displays the individual scores of each player from both teams.
 
 
-Modules/Functions:
+# Modules/Functions:
 
-void order(struct player *team, int n, node *top, int overs, int innings, int team_no); -- Orders the players based on the input batting order.
+<ul>
+<li>void order(struct player *team, int n, node *top, int overs, int innings, int team_no) -- Orders the players based on the input batting order.</li>
 
-void score_board(struct player *team1, struct player *team2, int n)
-Displays the final scores of the teams after the match has ended.
+<li>void score_board(struct player *team1, struct player *team2, int n) --
+Displays the final scores of the teams after the match has ended.</li>
 
-void bat(node *top, int overs) Batting function for 1st innings.
+<li>void bat(node *top, int overs) -- Batting function for 1st innings.</li>
 
-void bat2(node *top, int overs, int team_no)  Batting function for 2nd innings
+<li>void bat2(node *top, int overs, int team_no) -- Batting function for 2nd innings.</li>
 
-int isEmpty(node *top) -- Checks if stack is empty
+<li>int isEmpty(node *top) -- Checks if stack is empty.</li>
 
-node* create()-- Creates the stack as linked list data structure.
+<li>node* create()-- Creates the stack as linked list data structure.</li>
 
-void push(node *top, player *p1)-- Pushes an element into the stack.
+<li>void push(node *top, player *p1)-- Pushes an element into the stack.</li>
 
-node* peek(node *top)-- Returns the top element of the stack.
+<li>node* peek(node *top)-- Returns the top element of the stack.</li>
 
-player* pop(node *top)-- Pops the top element from the stack.
+<li>player* pop(node *top)-- Pops the top element from the stack.</li>
 
+</ul>
 
 
 
